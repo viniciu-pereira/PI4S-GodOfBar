@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Temperature Data API
+  description: API para acessar dados de temperatura
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /temperature:
+    get:
+      summary: Obtém os dados de temperatura
+      description: Retorna uma lista de dados de temperatura ordenados por timestamp.
+      responses:
+        '200':
+          description: Lista de dados de temperatura
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    temperature:
+                      type: number
+                      format: float
+                      example: 23.45
+                    timestamp:
+                      type: string
+                      format: date-time
+                      example: "2023-06-12T15:30:00Z"
+        '500':
+          description: Erro no servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Erro ao conectar ao banco de dados."
