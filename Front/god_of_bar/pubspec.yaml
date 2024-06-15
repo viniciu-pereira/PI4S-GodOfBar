@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   http: ^1.2.1
   fl_chart: ^0.68.0
+  intl: ^0.17.0
+
 
 
 
