@@ -1,18 +1,18 @@
 openapi: 3.0.0
 info:
-  title: Temperature Data API
-  description: API para acessar dados de temperatura
+  title: Temperatura e humidade capturadas pelo sensor HT11
+  description: API para acessar dados do sensor
   version: 1.0.0
 servers:
-  - url: http://localhost:8080/api
+  - url: http://apaixonautas.com.br/consulta.php
 paths:
-  /temperature:
+  /consulta:
     get:
-      summary: Obtém os dados de temperatura
-      description: Retorna uma lista de dados de temperatura ordenados por timestamp.
+      summary: Obtém os dados de temperatura e humidade
+      description: Retorna uma lista de dados de temperatura e humidade ordenados por timestamp.
       responses:
         '200':
-          description: Lista de dados de temperatura
+          description: Lista de dados de temperatura e humidade
           content:
             application/json:
               schema:
@@ -32,7 +32,7 @@ paths:
                       format: date-time
                       example: "2023-06-12T15:30:00Z"
         '500':
-          description: Erro no servidor
+          description: Erro interno no servidor
           content:
             application/json:
               schema:
@@ -40,4 +40,4 @@ paths:
                 properties:
                   error:
                     type: string
-                    example: "Erro ao conectar ao banco de dados."
+                    example: "Erro ao conectar ao banco de dados ou ao carregar log no arquivo"
